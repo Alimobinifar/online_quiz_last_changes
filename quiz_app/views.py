@@ -10,19 +10,16 @@ from .models import Questions ,Cat , Answers
 def show_questions(request):
     if request.method=="GET":
         query_set=list(Cat.objects.all())
-        query_set2=list(Questions.objects.all())
+        # query_set2=list(Questions.objects.filter(cat=''))
         result=[]
         for data in query_set:
             for qs in data.question.all():
                     result.append(qs.title)
 
-        result2=[]
-        for data2 in query_set2:
-            for qs in data2.answer.all():
-                    result2.append(qs.title)
-        return JsonResponse({'data':result,'answer':result2})
+        return JsonResponse({'data':result})
+        
     else:
-        return JsonResponse({"status": "error", "msg": "faghat get mojazeh"}, status=403)    
+        return JsonResponse({"status": "error"})    
 
 
 
