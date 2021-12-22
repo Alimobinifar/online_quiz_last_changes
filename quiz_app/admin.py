@@ -1,7 +1,9 @@
 from django.contrib import admin
 
 
-from .models import Questions ,Cat , Answers
+from .models import Questions ,Cat , Answers,Exsam
+
+admin.site.register(Exsam)
 
 @admin.register(Cat)
 class Cat_admin(admin.ModelAdmin):

@@ -17,6 +17,7 @@ class Questions(models.Model):
     def __str__(self):
         return self.title
 
+
 class Answers(models.Model):
     title=models.CharField(max_length=120)
     question=models.ForeignKey(Questions,related_name='answer', on_delete=models.CASCADE)
@@ -27,17 +28,12 @@ class Answers(models.Model):
 
 class User(models.Model):
     user_name=models.CharField(max_length=250)
-    phone_number=models.CharField(max_length=11)
+    # phone_number=models.CharField(max_length=11)
 
-class User_answers(models.Model): #one to many 
-    user=models.ForeignKey(User,related_name='user', on_delete=models.CASCADE)
-    question=models.ForeignKey(Questions, on_delete=models.CASCADE)
-    answer=models.ForeignKey(Answers,on_delete=models.CASCADE)
-    result=models.CharField(max_length=15)
+class Exsam(models.Model):
+    soalat = models.JSONField()
+    exsam_id = models.IntegerField()
 
-class reportـcard(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE)
-    score=models.IntegerField(max_length=3)
 
 
 
